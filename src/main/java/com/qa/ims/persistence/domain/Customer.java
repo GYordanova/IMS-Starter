@@ -16,6 +16,12 @@ public class Customer {
 		this.firstName = firstName;
 		this.surname = surname;
 	}
+	
+
+	public Customer(Long id) {
+		super();
+		this.id = id;
+	}
 
 	public Long getId() {
 		return id;
