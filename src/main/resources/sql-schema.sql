@@ -18,11 +18,16 @@ CREATE TABLE IF NOT EXISTS `ims`.`order` (
     `Orderid` INT(11) NOT NULL AUTO_INCREMENT,
     `Customerid` INT(11) NOT NULL,
     `price` DOUBLE NULL DEFAULT NULL,
-    PRIMARY KEY (`Orderid`)
+    PRIMARY KEY (`Orderid`),
+    CONSTRAINT `Customerid` FOREIGN KEY(`Customerid`) REFERENCES `ims`.`customers`(`id`)
 );
+
+
 CREATE TABLE IF NOT EXISTS `ims`.`orderline` (
 	`Orderlineid` INT(11) NOT NULL AUTO_INCREMENT,
     `Orderid` INT(11) NOT NULL,
     `Itemid` INT(11) NOT NULL,
-    PRIMARY KEY (`Orderlineid`)
+    PRIMARY KEY (`Orderlineid`),
+    CONSTRAINT `Orderid` FOREIGN KEY(`Orderid`) REFERENCES `ims`.`order`(`Orderid`),
+    CONSTRAINT `Itemid` FOREIGN KEY(`Itemid`) REFERENCES `ims`.`items`(`Itemid`)
 );
